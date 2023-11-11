@@ -52,7 +52,7 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+    '--branch=stable',     -- latest stable release
     lazypath,
   }
 end
@@ -220,9 +220,13 @@ require('lazy').setup({
   },
 
   {
+    'nvim-treesitter/playground',
+  },
+
+  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    opts = {} -- this is equalent to setup({}) function
+    opts = {}     -- this is equalent to setup({}) function
   },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -313,13 +317,34 @@ vim.keymap.set('v', 'A-K', ":m '<-2<CR>gv=gv")
 vim.keymap.set('v', '<A-Down>', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', '<A-Up>', ":m '<-2<CR>gv=gv")
 
+-- navigate between split windows
+vim.keymap.set('n', '<A-h>', '<C-w>h')
+vim.keymap.set('n', '<A-j>', '<C-w>j')
+vim.keymap.set('n', '<A-k>', '<C-w>k')
+vim.keymap.set('n', '<A-l>', '<C-w>l')
+
 -- i need this
 vim.keymap.set('i', '<C-c>', '<Esc>')
+
+-- add empty line
+vim.keymap.set('n', '<Enter>', 'o<Esc>')
+
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-h>', '<C-Left>')
+vim.keymap.set({ 'n', 'i', 'v' }, '<C-l>', '<C-Right>')
 
 -- keeps cursor in the same place when joining lines
 vim.keymap.set('n', 'J', "mzJ`z")
 -- reserve the current buffer while pasting over text
 vim.keymap.set('x', '<leader>p', "\"_dP")
+
+-- [bug: doesn't work] copy into system clipboard
+vim.keymap.set('n', '<leader>y', '\"+y')
+vim.keymap.set('v', '<leader>y', '\"+y')
+vim.keymap.set('n', '<leader>Y', '\"+Y')
+
+-- delete without copying
+vim.keymap.set('n', '<leader>d', '\"_d')
+vim.keymap.set('v', '<leader>d', '\"_d')
 
 -- keeps the cursor in middle while jumping to search terms
 vim.keymap.set('n', 'n', "nzzzv")
@@ -417,7 +442,7 @@ vim.defer_fn(function()
     textobjects = {
       select = {
         enable = true,
-        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true,         -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
           ['aa'] = '@parameter.outer',
@@ -430,7 +455,7 @@ vim.defer_fn(function()
       },
       move = {
         enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
+        set_jumps = true,         -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
           [']]'] = '@class.outer',
@@ -626,4 +651,19 @@ cmp.setup {
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
+-- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et

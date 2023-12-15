@@ -52,7 +52,7 @@ if not vim.loop.fs_stat(lazypath) then
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable',     -- latest stable release
+    '--branch=stable', -- latest stable release
     lazypath,
   }
 end
@@ -226,7 +226,7 @@ require('lazy').setup({
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
-    opts = {}     -- this is equalent to setup({}) function
+    opts = {} -- this is equalent to setup({}) function
   },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
@@ -323,6 +323,15 @@ vim.keymap.set('n', '<A-j>', '<C-w>j')
 vim.keymap.set('n', '<A-k>', '<C-w>k')
 vim.keymap.set('n', '<A-l>', '<C-w>l')
 
+-- change window width/height
+vim.keymap.set('n', '<A-Left>', '<C-w><')
+vim.keymap.set('n', '<A-Right>', '<C-w>>')
+-- vim.keymap.set('n', '<A-Up>', '<C-w>+')
+-- vim.keymap.set('n', '<A-Down>', '<C-w>-')
+vim.keymap.set('n', '<A-\\>', '<C-w>|')
+vim.keymap.set('n', '<A-->', '<C-w>_')
+vim.keymap.set('n', '<A-=>', '<C-w>=')
+
 -- i need this
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
@@ -392,6 +401,13 @@ require('telescope').setup {
   },
 }
 
+require 'nvim-treesitter.configs'.setup {
+  autotag = {
+    enable = true,
+  }
+}
+
+
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
 
@@ -442,7 +458,7 @@ vim.defer_fn(function()
     textobjects = {
       select = {
         enable = true,
-        lookahead = true,         -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
           ['aa'] = '@parameter.outer',
@@ -455,7 +471,7 @@ vim.defer_fn(function()
       },
       move = {
         enable = true,
-        set_jumps = true,         -- whether to set jumps in the jumplist
+        set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
           [']m'] = '@function.outer',
           [']]'] = '@class.outer',
